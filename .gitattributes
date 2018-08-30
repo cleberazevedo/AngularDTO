@@ -1,1 +1,1 @@
-gitconfig linguist-language=gitconfig
+*.ts linguist-language=TypeScript
