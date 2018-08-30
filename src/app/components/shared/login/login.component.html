@@ -1,0 +1,27 @@
+<form [formGroup]="frm" novalidate>
+  <div>
+    <br /><br />
+    <mat-card class="painel">
+      <mat-card-header>Efetue seu login e senha</mat-card-header>
+      <mat-card-content>
+        <div class="login-painel">
+          <br />
+          <mat-form-field class="login-painel">
+            <input matInput placeholder="user" formControlName="user" required>
+          </mat-form-field>
+
+          <mat-form-field class="login-painel">
+            <input matInput placeholder="Enter your password" formControlName="password" required [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+
+          <div class="login-painel button-row">
+            <button mat-raised-button [disabled]="!frm.valid" (click)="login()">Log in</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <app-toaster #toasterComponent></app-toaster>
+</form>

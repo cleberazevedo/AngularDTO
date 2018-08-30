@@ -1,0 +1,212 @@
+@import 'app/components/shared/css/custom-theme.css';
+@import 'app/components/shared/css/toaster.css';
+@font-face {
+  font-family: 'Calibri';
+  src: url('app/components/shared/css/fonts/Calibri.ttf');
+}
+
+body {
+  margin: 0;
+  font-family: Calibri, Roboto, sans-serif;
+  color: #403d3d;
+  font-size: small;
+}
+
+a:link {
+  text-decoration: none;
+  color: #403d3d;
+}
+
+.content {
+  min-height: calc(100vh - 50px);
+}
+
+.text-normal {
+  font-size: x-small;
+}
+
+.text-small {
+  font-size: xx-small;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.footer {
+  float: left;
+  height: 40px;
+  width: 100%;
+  padding-top: 10px;
+  background-color: #dedfe0 !important;
+}
+
+.color-brasil-risk {
+  background-color: #006DA0 !important;
+  color: #ffffff;
+  width: 100%;
+  height: 40px;
+}
+
+.color-hover {
+  color: #2B6598
+}
+
+.login-painel {
+  width: 200px;
+  margin: auto;
+}
+
+.painel {
+  width: 300px;
+  margin: auto;
+  border: 1px solid #cccccc;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left-side {
+  width: 14%;
+  float: left !important;
+  padding: 2px;
+}
+
+.menu {
+  min-height: calc(100vh - 13vh);
+  background-color: #dedfe0;
+  width: 100%;
+  float: left !important;
+  padding: 2px;
+}
+  .menu *:hover {
+    color: #1badce !important;
+    cursor: pointer;
+  }
+
+.icon-menu-side {
+  float: left !important;
+}
+
+.menu-side {
+  width: 100%;
+  float: left !important;
+  background-color: #fff;
+  border-bottom: 2px solid #dedfe0;
+  font-size: x-small;
+  display: block;
+}  
+
+.text-menu-side {
+  padding-top: 6px;
+  padding-left: 5px;
+  float: left !important;
+}
+
+.router-side {
+  width: 82%;
+  float: right !important;
+}
+
+.width-router {
+  width: 90%;
+  float: left;
+}
+
+.complete-box {
+  width: 30%;
+}
+
+.entitie-box {
+  width: 60%;
+}
+
+.brasil-risk-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.brasil-risk-table {
+  width: 100%;
+  flex: 1 1 auto;
+  padding-bottom: 10px;
+}
+
+.brasil-risk-header-row, .brasil-risk-row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+  height: 42px;
+  padding: 0 8px;
+}
+
+.brasil-risk-cell, .brasil-risk-header-cell {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.brasil-risk-cell-large {
+  flex: 3;
+  width: 80% !important;
+}
+
+.brasil-risk-header-cell {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.brasil-risk-cell-id {
+  width: 5% !important;
+}
+
+.brasil-risk-cell-width {
+  width: 20% !important;
+}
+
+.brasil-risk-cell-width-action {
+  width: 10% !important;
+}
+
+.div-right {
+  height: 50px;
+  text-align: right;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.input-bg-color {
+  background-color: #9fb1c1 !important;
+}
+
+.radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.radio-button-queue {
+  margin-top: 15px;
+  width: 13px !important;
+}
+
+.selected-value {
+  margin: 15px 0;
+}

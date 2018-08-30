@@ -1,0 +1,55 @@
+<form [formGroup]="frm">
+  BUSCA<br />
+  <mat-form-field>
+    <input readonly matInput [matDatepicker]="picker" placeholder="Data" formControlName="createData" [formControl]="serializedDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker (selectedChanged)="onDate($event)"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Código Empresa" formControlName="codEmpresa">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Código SM" formControlName="codSM">
+  </mat-form-field>
+
+  <label>Status</label>
+  <input  type="radio" class="radio-button-queue" id="roteirizar" value="true" formControlName="status" (click)="changeStatus(true)"> SIM
+  <input  type="radio" class="radio-button-queue" id="roteirizar" value="false" formControlName="status" (click)="changeStatus(false)"> NÃO
+
+  <button mat-button color="primary" (click)="pushList()">Buscar</button>
+</form>
+<br /><br />
+<div class="brasil-risk-container mat-elevation-z8">
+  <table class="brasil-risk-table">
+    <thead>
+      <tr class="brasil-risk-header-row">
+        <th class="brasil-risk-cell-id text-center">ID.</th>
+        <th class="brasil-risk-cell-width-action text-center">Cod. Empresa</th>
+        <th class="brasil-risk-cell-large text-center">Cod. SM</th>
+        <th class="brasil-risk-cell-width-action text-center">Status</th>
+        <th class="brasil-risk-cell-width-action text-center">AÇÃO</th>
+      </tr>
+    </thead>
+
+    <tfoot *ngIf="queue">
+      <tr *ngFor="let row of queue" class="brasil-risk-row">
+        <td class="brasil-risk-cell-id text-center">{{ row.CodSM }}</td>
+        <td class="brasil-risk-cell-width-action text-center">{{ row.CodEmpresa }}</td>
+        <td class="brasil-risk-cell-large text-center">{{ row.CodSM }}</td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <span *ngIf="row.StatusEnvio">Processado</span>
+          <span *ngIf="!row.StatusEnvio">Não Processado</span>
+        </td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <i class="material-icons pointer" (click)="autoRenew(row.CodSM)">autorenew</i>
+          <i class="material-icons pointer" (click)="filedDownload(row.CodSM)">file_download</i>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+<app-toaster #toasterComponent></app-toaster>
+

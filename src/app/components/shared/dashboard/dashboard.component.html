@@ -1,0 +1,41 @@
+<base href="/dashboard/">
+<section>
+  <div class="left-side">
+    <div class="menu">
+      <div class="menu-side" [routerLink]="['/dashboard/empresa']">
+        <span class="icon-menu-side">
+          <i class="material-icons">settings</i>
+        </span>
+        <span class="text-menu-side">
+          EMPRESAS
+        </span>
+      </div>
+      <!--
+      <div class="menu-side">
+        <span class="icon-menu-side">
+          <i class="material-icons">settings_input_antenna</i>
+        </span>
+        <span class="text-menu-side">
+          CONSULTAR SINAL
+        </span>
+      </div>
+      -->
+      <div class="menu-side" [routerLink]="['/dashboard/queue']">
+        <span class="icon-menu-side">
+          <i class="material-icons">computer</i>
+        </span>
+        <span class="text-menu-side">
+          FILA INTEGRAÇÃO
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="router-side">
+    <br />
+    <div class="width-router">
+      <breadcrumb></breadcrumb>
+      <br />
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

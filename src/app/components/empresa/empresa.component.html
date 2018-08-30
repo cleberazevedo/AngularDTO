@@ -1,0 +1,116 @@
+<form [formGroup]="frm">
+  <mat-form-field class="entitie-box">
+    <input matInput placeholder="Buscar uma empresa" formControlName="entitie" (keydown)="onChangeEntities($event)">
+  </mat-form-field>
+
+  <div class="brasil-risk-container">
+    <div class="brasil-risk-table">
+      <div *ngFor="let entitie of filtereds">
+        <div class="pointer brasil-risk-header-row">
+          <span (click)="filterID(entitie.CodEmpresa)">{{ entitie.NomeFantasia }}</span><br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="entitie-box" *ngIf="viewNewItem || viewEdit">
+    <b>ATIVO</b>
+    <label>
+      <input class="radio-button" type="radio" id="ativo" value="true" name="ativo" [checked]="ativo === true"> SIM
+      <input class="radio-button" type="radio" id="ativo" value="false" name="ativo" [checked]="ativo === false"> NÃO
+    </label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>ROTEIRIZAR</b>
+    <label>
+      <input class="radio-button" type="radio" id="roteirizar" value="true" name="roteirizar" [checked]="roteirizar === true"> SIM
+      <input class="radio-button" type="radio" id="roteirizar" value="false" name="roteirizar" [checked]="roteirizar === false"> NÃO
+    </label>
+  </div>
+</form>
+
+<div class="div-right">
+  <button mat-button color="primary" *ngIf="trafegus && !viewNewItem" (click)="deleteAll(CodEmpresaTrafegus)">Deletar</button>
+  <button mat-button color="primary" *ngIf="numberEntitieID" (click)="addItem()">Adicionar Novo</button>
+  <button mat-button color="primary" *ngIf="trafegus" (click)="edit()">Editar</button>
+  <button mat-button color="primary" *ngIf="viewNewItem || viewEdit" (click)="saveItem()">Salvar</button>
+</div>
+
+<div class="div-right">
+  <div id="errorsMessage"></div>
+</div>
+
+<div class="brasil-risk-container mat-elevation-z8">
+  <table class="brasil-risk-table">
+    <thead>
+      <tr class="brasil-risk-header-row">
+        <th class="brasil-risk-cell-id">ID.</th>
+        <th class="brasil-risk-cell-width-action text-center">EMBARCADOR</th>
+        <th class="brasil-risk-cell-large">CENTRO CUSTO</th>
+        <th class="brasil-risk-cell-width-action text-center">POSIÇÃO</th>
+        <th class="brasil-risk-cell-width-action text-center">ESTAÇÃO</th>
+        <th class="brasil-risk-cell-width-action text-center">PGR</th>
+        <th class="brasil-risk-cell-width-action text-right">AÇÃO</th>
+      </tr>
+    </thead>
+
+    <tfoot>
+      <tr *ngFor="let row of trafegus; let i = index" class="brasil-risk-row">
+        <td class="brasil-risk-cell-id"><label id="codEstacaodePara{{i}}">{{ row.CodTrafegusEstacaoDePara }}</label></td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <span *ngIf="!viewEdit">
+            <span *ngIf="row.Embarcador === true">SIM</span>
+            <span *ngIf="row.Embarcador !== true">NÃO</span>
+          </span>
+          <span *ngIf="viewEdit">
+            <label>
+              <input class="radio-button" type="radio" id="embarcador{{i}}" value="true" name="embarcador{{i}}" [checked]="row.Embarcador === true"> SIM
+              <input class="radio-button" type="radio" id="embarcador{{i}}" value="false" name="embarcador{{i}}" [checked]="row.Embarcador === false"> NÃO
+            </label>
+          </span>
+        </td>
+        <td class="brasil-risk-cell-large text-center">
+          <span *ngIf="!viewEdit">{{ row.CodCentroCusto }}</span>
+          <div *ngIf="viewEdit">
+            <input matInput class="input-bg-color text-center" type="text" id="centrocusto{{i}}" value="{{ row.CodCentroCusto }}" placeholder="Centro de Custo" (keydown)="onChangeCC($event, i)" />
+            <br />
+            <b><span id="centrocustoName{{i}}" class="text-small"></span></b>
+          </div>
+        </td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <span *ngIf="!viewEdit">{{ row.BR2Posicao }}</span>
+          <div *ngIf="viewEdit">
+            <input matInput class="input-bg-color text-center brasil-risk-cell-width" type="text" id="posicao{{i}}" value="{{ row.BR2Posicao }}" placeholder="POS" />
+          </div>
+        </td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <span *ngIf="!viewEdit">{{ row.Estacao }}</span>
+          <div *ngIf="viewEdit">
+            <input matInput class="input-bg-color text-center brasil-risk-cell-width" type="text" id="estacao{{i}}" value="{{ row.Estacao }}" placeholder="EST" />
+          </div>
+        </td>
+        <td class="brasil-risk-cell-width-action text-center">
+          <span *ngIf="!viewEdit">{{ row.PGR }}</span>
+          <div *ngIf="viewEdit">
+            <input matInput class="input-bg-color text-center brasil-risk-cell-width" type="text" id="pgr{{i}}" value="{{ row.PGR }}" placeholder="PGR" />
+          </div>
+        </td>
+        <td class="brasil-risk-cell-width-action text-right">
+          <i *ngIf="viewNewItem || viewEdit" class="material-icons pointer" (click)="delete(row.CodTrafegusEstacaoDePara)">cancel</i>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="brasil-risk-container">
+    <div class="brasil-risk-table">
+      <div *ngFor="let c of searchCentroCusto">
+        <div class="pointer brasil-risk-header-row">
+          <span (click)="filterCC(c.CodEmpresaCentroCusto, c.Nome)">{{ c.Nome }}</span><br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-toaster #toasterComponent></app-toaster>
+

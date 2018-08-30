@@ -1,0 +1,17 @@
+<form [formGroup]="frm">
+  <div>
+    <mat-form-field class="complete-box">
+      <input matInput placeholder="{{title}}" aria-label="PopBox" formControlName="selected" [matAutocomplete]="auto" (keydown)="onKeydown($event)">
+      <mat-icon matSuffix (click)="openBox()">arrow_drop_down</mat-icon>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of filteredPop | async" [value]="pop.identification">
+          <span *ngIf="viewFlag">
+            <img style="vertical-align:middle;" aria-hidden src="{{pop.flag}}" height="25" />
+          </span>
+          <span>{{ pop.name }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</form>

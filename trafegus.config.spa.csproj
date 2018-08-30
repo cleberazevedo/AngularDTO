@@ -1,0 +1,132 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="src\app\components\components.ts" />
+    <None Remove="src\app\components\queue\queue.component.spec.ts" />
+    <None Remove="src\app\components\queue\queue.component.ts" />
+    <None Remove="src\app\components\shared\breadcrumb\breadcrumb.component.ts" />
+    <None Remove="src\app\components\shared\dashboard\dashboard.component.spec.ts" />
+    <None Remove="src\app\components\shared\dashboard\dashboard.component.ts" />
+    <None Remove="src\app\components\shared\home\app.component.spec.ts" />
+    <None Remove="src\app\components\shared\home\app.component.ts" />
+    <None Remove="src\app\components\shared\login\login.component.spec.ts" />
+    <None Remove="src\app\components\shared\login\login.component.ts" />
+    <None Remove="src\app\components\shared\select\select.component.spec.ts" />
+    <None Remove="src\app\components\shared\select\select.component.ts" />
+    <None Remove="src\app\components\shared\toaster\toaster.component.spec.ts" />
+    <None Remove="src\app\components\shared\toaster\toaster.component.ts" />
+    <None Remove="src\app\models\centrocusto.ts" />
+    <None Remove="src\app\models\empresastrafegus.ts" />
+    <None Remove="src\app\models\empresastrafegusdepara.ts" />
+    <None Remove="src\app\models\toaster.messages.ts" />
+    <None Remove="src\app\models\trafegusqueue.ts" />
+    <None Remove="src\app\models\usuarios.ts" />
+    <None Remove="src\app\models\usuariossenha.ts" />
+    <None Remove="src\app\services\empresatrafegusdepara.service.ts" />
+    <None Remove="src\app\services\endpoints.service.ts" />
+    <None Remove="src\app\services\loginguard.ts" />
+    <None Remove="src\app\services\trafegusqueue.service.ts" />
+    <None Remove="src\app\services\usuarios.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AfominDotCom.NgProjectTemplate.Server" Version="1.0.5" />
+    <PackageReference Include="Npm" Version="3.5.2" />
+    <PackageReference Include="tslint" Version="5.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="README.md" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\components\queue\queue.component.ts" />
+    <TypeScriptCompile Include="src\app\components\queue\queue.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\breadcrumb\breadcrumb.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\dashboard\dashboard.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\home\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\home\app.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\notfound\notfound.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\notfound\notfound.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\select\select.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\select\select.component.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\toaster\toaster.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\shared\toaster\toaster.component.ts" />
+    <TypeScriptCompile Include="src\app\models\centrocusto.ts" />
+    <TypeScriptCompile Include="src\app\models\empresastrafegus.ts" />
+    <TypeScriptCompile Include="src\app\models\empresastrafegusdepara.ts" />
+    <TypeScriptCompile Include="src\app\models\toaster.messages.ts" />
+    <TypeScriptCompile Include="src\app\models\trafegusqueue.ts" />
+    <TypeScriptCompile Include="src\app\models\usuarios.ts" />
+    <TypeScriptCompile Include="src\app\models\usuariossenha.ts" />
+    <TypeScriptCompile Include="src\app\services\empresatrafegusdepara.service.ts" />
+    <TypeScriptCompile Include="src\app\services\endpoints.service.ts" />
+    <TypeScriptCompile Include="src\app\services\empresas.service.ts" />
+    <TypeScriptCompile Include="src\app\services\loginguard.ts" />
+    <TypeScriptCompile Include="src\app\services\trafegusqueue.service.ts" />
+    <TypeScriptCompile Include="src\app\services\usuarios.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\app\components\shared\css\flag\" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NgProjectAssetsFile Condition="'$(ProjectAssetsFile)' != ''">$(ProjectAssetsFile)</NgProjectAssetsFile>
+    <NgProjectAssetsFile Condition="'$(NgProjectAssetsFile)' == ''">$(BaseIntermediateOutputPath)/project.assets.json</NgProjectAssetsFile>
+    <!-- Ensure $(NgProjectAssetsFile) is a full path -->
+    <NgProjectAssetsFile Condition="'$([System.IO.Path]::IsPathRooted($(NgProjectAssetsFile)))' != 'true'">
+      $([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '$(NgProjectAssetsFile)'))))
+    </NgProjectAssetsFile>
+  </PropertyGroup>
+
+  <Target Name="EnsureNugetPackagesInstalled" BeforeTargets="BeforeBuild" Condition="!Exists('$(NgProjectAssetsFile)')">
+    <Message Text="File $(NgProjectAssetsFile) was not found." Importance="high" />
+    <Message Text="------ Running a NuGet package restore ------" Importance="high" />
+    <Exec Command="dotnet restore" />
+    <Error Text="NuGet packages were restored. Run Build again." />
+  </Target>
+
+  <Target Name="NgBuildAndAddToPublishOutput" AfterTargets="ComputeFilesToPublish">
+    <Message Text=" " Importance="high" />
+    <Exec Command="npm run | findstr &quot;build:$(Configuration)&quot;" ConsoleToMSBuild="true" IgnoreExitCode="true" EchoOff="true" WorkingDirectory="$(MSBuildProjectDirectory)">
+      <Output TaskParameter="ConsoleOutput" PropertyName="NpmScriptName" />
+    </Exec>
+    <Exec Condition=" '$(NpmScriptName)'=='build:$(Configuration)' " Command="npm run $(NpmScriptName)" />
+    <Exec Condition=" '$(NpmScriptName)'!='build:$(Configuration)' " Command="npm run build" />
+    
+    <ItemGroup>
+      <DistFiles Include="dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CopyOnlyDist" AfterTargets="_CopyManagedProjectFilesToPublishIntermediateOutputPath;_CopyAspNetCoreFilesToIntermediateOutputPath">
+    <PropertyGroup>
+      <PublishIntermediateOutputPath>$(PublishIntermediateOutputPath)dist\</PublishIntermediateOutputPath>
+      <IsTransformWebConfigDisabled>True</IsTransformWebConfigDisabled>
+    </PropertyGroup>
+  </Target>
+  
+</Project>
