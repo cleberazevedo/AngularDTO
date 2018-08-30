@@ -1,8 +1,4 @@
-# trafegus.config.spa
-
-This project was generated with [NgProjectTemplate](https://github.com/andfomin/NgProjectTemplate) version 1.0.10.0.
-
-# Trafegus.Config.Spa
+# .Config.Spa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
